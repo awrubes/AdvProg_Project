@@ -83,4 +83,40 @@ plt.show()
 #show basic statistics of global supply chain pressure index
 supply_pressure_df['GSCPI'].describe()
 
+real_income_csv = "https://github.com/awrubes/AdvProg_Project/raw/refs/heads/main/real%20median%20household%20income%20MEHOINUSA672N.csv"
+#real median household income put into data frame
+real_income_df = pd.read_csv(real_income_csv)
+#view data
+real_income_df.head()
 
+median_income_csv = "https://github.com/awrubes/AdvProg_Project/raw/refs/heads/main/median%20household%20income%20MEHOINUSA646N.csv"
+#median household income put into data frame
+median_income_df = pd.read_csv(median_income_csv)
+#view data
+median_income_df.head()
+
+plt.plot(real_income_df['DATE'], real_income_df['MEHOINUSA672N'])  
+
+#label the axis and give title
+plt.xlabel('Date')
+plt.ylabel('Real Median Household Income ($)')
+plt.title(' Real Median Household Income vs. Date')
+
+#tilt the dates for readability 
+plt.xticks(rotation=45)
+#dipslay plot
+plt.show()
+real_income_df.describe()
+
+plt.plot(median_income_df['DATE'], median_income_df['MEHOINUSA646N'])  
+
+#label the axis and give title
+plt.xlabel('Date')
+plt.ylabel('Median Household Income ($)')
+plt.title(' Real Median Household Income vs. Date')
+
+#tilt the dates for readability 
+plt.xticks(rotation=45)
+#dipslay plot
+plt.show()
+median_income_df.describe()
