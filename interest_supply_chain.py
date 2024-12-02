@@ -120,3 +120,19 @@ plt.xticks(rotation=45)
 #dipslay plot
 plt.show()
 median_income_df.describe()
+
+#interest by country
+country_interest_excel = "https://github.com/awrubes/AdvProg_Project/raw/refs/heads/main/interest_by_country_IMF-IFS.xlsx"
+#median household income put into data frame
+country_interest_df = pd.read_excel(country_interest_excel)
+#view data
+print(country_interest_df.head())
+country_interest_df.describe()
+
+#GDP per Capita by country
+
+GDP_capita = "https://github.com/awrubes/AdvProg_Project/raw/refs/heads/main/GDP%20per%20capita%20WITS-Country-Timeseries.xlsx"
+gdp_capita_df = pd.read_excel(GDP_capita)
+#view data
+print(gdp_capita_df.head())
+gdp_capita_df.describe()
