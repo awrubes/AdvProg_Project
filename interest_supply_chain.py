@@ -136,3 +136,54 @@ gdp_capita_df = pd.read_excel(GDP_capita)
 #view data
 print(gdp_capita_df.head())
 gdp_capita_df.describe()
+
+#GNI per capita by country (income)
+GNI_capita = "https://github.com/awrubes/AdvProg_Project/raw/refs/heads/main/GNI%20per%20capita%20WITS-Country-Timeseries%20(1).xlsx"
+gni_capita_df = pd.read_excel(GNI_capita)
+#view data
+print(gni_capita_df.head())
+gni_capita_df.describe()
+
+#median income yearly data converted to a linear interpolation of data
+
+
+# Ensure DATE column is datetime
+median_income_df['DATE'] = pd.to_datetime(median_income_df['DATE'], errors='coerce')
+
+# Ensure MEHOINUSA646N column is numeric
+median_income_df['MEHOINUSA646N'] = pd.to_numeric(median_income_df['MEHOINUSA646N'], errors='coerce')
+
+# Set Month_year as index
+median_income_df['Month_year'] = median_income_df['DATE']
+median_income_df.set_index('Month_year', inplace=True)
+
+# Drop the DATE column
+median_income_df.drop(columns=['DATE'], inplace=True)
+
+# Resample to monthly and interpolate
+median_income_df_monthly = median_income_df.resample('MS').interpolate(method='linear')
+
+# Debug: Check the interpolated values
+print(median_income_df_monthly)
+
+#real income yearly data converted to a linear interpolation of data
+# Ensure DATE column is datetime
+real_income_df['DATE'] = pd.to_datetime(real_income_df['DATE'], errors='coerce')
+
+# Ensure MEHOINUSA672N column is numeric
+real_income_df['MEHOINUSA672N'] = pd.to_numeric(real_income_df['MEHOINUSA672N'], errors='coerce')
+
+# Set Month_year as index
+real_income_df['Month_year'] = real_income_df['DATE']
+real_income_df.set_index('Month_year', inplace=True)
+
+# Drop the DATE column
+real_income_df.drop(columns=['DATE'], inplace=True)
+
+# Resample to monthly and interpolate
+real_income_df_monthly = real_income_df.resample('MS').interpolate(method='linear')
+
+# Debug: Check the interpolated values
+print(real_income_df_monthly)
+
+
